@@ -1,0 +1,12 @@
+:root{--bg:#3E3E39;--ink:#F7F5F0;--muted:#CEC8B8;--line:rgba(247,245,240,.22);--accent:#7D4D31}
+@media (prefers-color-scheme: light){:root{--bg:#F7F5F0;--ink:#3E3E39;--muted:#676A62;--line:rgba(62,62,57,.2)}}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{font:17px/1.6 Lora,Georgia,serif;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px 16px}
+main{max-width:440px;width:100%;display:flex;flex-direction:column;gap:18px}
+.brand{font:500 13px/1.4 "Cormorant Garamond",Georgia,serif;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+h1{font:500 34px/1.15 "Cormorant Garamond",Georgia,serif;margin:0}
+p{margin:0}.muted{color:var(--muted);font-size:15px}
+.btn{display:block;width:100%;text-align:center;border:0;border-radius:999px;padding:16px;font:600 17px Figtree,system-ui,sans-serif;background:var(--accent);color:#F7F5F0;text-decoration:none;cursor:pointer}
+.btn2{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.card{border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px}
+[hidden]{display:none!important}

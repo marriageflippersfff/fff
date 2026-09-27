@@ -1,0 +1,29 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>FFF Daily check-in</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Figtree:wght@600&family=Lora&display=swap" rel="stylesheet"><link rel="stylesheet" href="/style.css"></head>
+<body><main>
+<span class="brand">FFF Daily</span>
+<div id="ok" hidden>
+ <h1>Your partner's check-in is here.</h1>
+ <p style="margin-top:14px">Tap below to open FFF Daily and blend your day together.</p>
+ <div style="margin-top:20px"><a class="btn" id="open" href="#">Open in FFF Daily</a></div>
+ <div class="card" style="margin-top:24px"><p class="muted">Using the web version instead? Copy the code, open FFF Daily, and paste it into Add my partner's code.</p><button class="btn btn2" id="copy" type="button">Copy the code</button></div>
+ <p class="muted" style="margin-top:20px">Your check-in travels inside this link. Nothing is sent to or saved on this website.</p>
+</div>
+<div id="none" hidden>
+ <h1>This link is missing its check-in.</h1>
+ <p>Sometimes a long link gets cut off in a message. Ask your partner to tap Send my code again.</p>
+</div>
+</main>
+<script>
+(function(){
+ var raw=decodeURIComponent((location.hash||"").slice(1)).replace(/\s/g,"");
+ var i=raw.indexOf("FFF2");
+ if(i<0||raw.length-i<20){document.getElementById("none").hidden=false;return;}
+ var code=raw.slice(i);document.getElementById("ok").hidden=false;
+ var app="fffdaily://c#"+code;document.getElementById("open").href=app;
+ document.getElementById("copy").onclick=function(){var b=this;function done(){b.textContent="Copied";}
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(code).then(done,fallback);else fallback();
+  function fallback(){var t=document.createElement("textarea");t.value=code;document.body.appendChild(t);t.select();try{document.execCommand("copy");done();}catch(e){}document.body.removeChild(t);}};
+ setTimeout(function(){location.href=app;},400);
+})();
+</script></body></html>
